@@ -1,0 +1,155 @@
+@media screen and (max-width: 1015px) {
+	.containerFirst {
+		text-align: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.containerFirstRight {
+		align-items: start;
+	}
+
+	.containerFirstLeft, .containerFirstRight {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 920px) {
+	body.disabledScroll {
+    overflow: hidden;
+  }
+	
+	.navdesk {
+		display: none;
+	}
+	.navmob {
+		z-index: 10;
+		background-color: #fff;
+		width: 100%;
+		position: absolute;
+		-webkit-transform: translate(-100%, 0);
+		transform: translate(-100%, 0);
+		transition: transform 0.3s ease;
+	}
+	.open {
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
+	}
+	.navmob .navlistmob .navitemsmob {
+		display: list-item;
+		color: black !important;
+		width: 100%;
+		text-align: left;
+	}
+
+	.hero {
+		height: 100vh;
+		background-image: linear-gradient(rgba(21, 21, 21, 0.7), rgba(21, 21, 21, 0.7)), url('../public/images/heros/hero-image_2-small.webp');
+	}
+
+	.listReview {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		grid-column-gap: 10px;
+		grid-row-gap: 10px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.listReview {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 10px;
+		grid-row-gap: 10px;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	.menumob .contentmob .logomob {
+		font-size: 16px;
+	}
+	.menumob .iconmenu {
+		background-color: transparent;
+		border: none;
+		font-size: 24px;
+		cursor: pointer;
+		min-width: 40px;
+		min-height: 40px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.content .titleContent {
+		font-size: 2.3em;
+	}
+
+	.navmob .navlistmob .navitemsmob a {
+		width: 100%;
+	}
+
+	.listReview {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-column-gap: 10px;
+		grid-row-gap: 10px;
+	}
+}
+
+@media screen and (max-width: 365px) {
+	.menumob .contentmob .logomob {
+		font-size: 12px;
+	}
+	.menumob .iconmenu {
+		background-color: transparent;
+		border: none;
+		font-size: 16px;
+		cursor: pointer;
+		min-width: 40px;
+		min-height: 40px;
+	}
+}
+
+/* ==================================================================================================================== */
+
+@media screen and (min-width: 600px) {
+	.listRestaurant {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-column-gap: 10px;
+		grid-row-gap: 16px;
+	}
+}
+
+@media screen and (min-width: 650px) {
+	.content .listRestaurant .listItem .contentDescription {
+		padding: 16px 32px 32px 32px;
+	}
+	.content .listRestaurant .listItem .contentDescription .name {
+		font-size: 18px;
+	}
+	.content .listRestaurant .listItem .contentDescription .description {
+		font-size: 14px;
+	}
+}
+
+@media screen and (min-width: 920px) {
+	.menumob {
+		display: none;
+	}
+	.navmob {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.listRestaurant {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.content {
+		max-width: 1200px;
+	}
+}
