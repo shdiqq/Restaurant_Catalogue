@@ -192,6 +192,36 @@ body {
 	padding: 32px;
 }
 
+.content .searchBar {
+	width: 100%;
+	border: 1px solid rgb(255, 255, 255);
+	border-radius: 6px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 24px;
+}
+
+.content .searchBar input {
+	border: 1px solid rgba(0, 0, 0, 1);
+	outline: none;
+	box-shadow: none;
+	min-height: 40px;
+	width: 100%;
+	font-size: 16px;
+	font-weight: 600;
+	padding: 8px 12px;
+}
+
+.content .searchBar i {
+	border: 1px solid rgba(0, 0, 0, 1);
+	min-width: 40px;
+	min-height: 40px;
+	background-color: white;
+	padding: 12px;
+	cursor: pointer;
+}
+
 .content .resaurantDetail {
 	margin-top: 75px;
 }

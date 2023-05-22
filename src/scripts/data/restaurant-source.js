@@ -15,7 +15,8 @@ class TheRestaurantDbSource {
 
   static async getSearch(query) {
     const response = await fetch(API_ENDPOINT.GET_SEARCH(query));
-    return response.json();
+    const responseJson = await response.json();
+    return responseJson;
   }
 
   static async sendReview(param1, param2, param3) {

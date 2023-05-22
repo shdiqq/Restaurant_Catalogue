@@ -12,10 +12,13 @@ const Home = {
           </div>
         </div>
         <div class="content">
-          <div>
-            <h1 class="titleContent">Eksplorasi Restoran</h1>
-            <div class="listRestaurant"></div>
-          </div>
+          <h1 class="titleContent">Eksplorasi Restoran</h1>
+          <form class="searchBar">
+            <input type="text" name"" id="searchRestaurant" placeholder="Pencarian">
+            <i class="fa-solid fa-magnifying-glass" id="buttonSearch"></i>
+          </form>
+          <div class="notFound"> </div>
+          <div class="listRestaurant"></div>
         </div>
       </section>
     `;
@@ -66,11 +69,11 @@ const Home = {
       }
     };
 
-    const restaurant = await TheRestaurantDbSource.getListRestaurant();
+    let restaurant = await TheRestaurantDbSource.getListRestaurant();
+    const notFound = document.querySelector('.notFound');
     const restaurantsContainer = document.querySelector('.listRestaurant');
 
     restaurant.restaurants.forEach((data) => {
-      // console.log(data);
       let listRating = '';
       let listEmptyRating = '';
       const ratingFloor = Math.floor(data.rating);
@@ -89,6 +92,65 @@ const Home = {
         listRating,
         listEmptyRating,
       );
+    });
+
+    const buttonSearch = document.querySelector('#buttonSearch');
+    buttonSearch.addEventListener('click', async () => {
+      const query = document.getElementById('searchRestaurant').value;
+      notFound.innerHTML = '';
+      restaurantsContainer.innerHTML = '';
+      if (query !== '') {
+        restaurant = await TheRestaurantDbSource.getSearch(query);
+        if (restaurant.founded === 0) {
+          const notFoundMessage = `
+            <h5 class="titleContentEmpty">Nothing found for search ${query}</h5>
+            `;
+          notFound.innerHTML += notFoundMessage;
+        } else {
+          restaurant.restaurants.forEach((data) => {
+            let listRating = '';
+            let listEmptyRating = '';
+            const ratingFloor = Math.floor(data.rating);
+            for (let i = 0; i < ratingFloor; i += 1) {
+              listRating += `
+                <div class="fa fa-star checked"></div>
+              `;
+            }
+            for (let i = 0; i < 5 - ratingFloor; i += 1) {
+              listEmptyRating += ` 
+                <div class="fa fa-star"></div>
+              `;
+            }
+            restaurantsContainer.innerHTML += createRestaurantItemTemplate(
+              data,
+              listRating,
+              listEmptyRating,
+            );
+          });
+        }
+      } else {
+        restaurant = await TheRestaurantDbSource.getListRestaurant();
+        restaurant.restaurants.forEach((data) => {
+          let listRating = '';
+          let listEmptyRating = '';
+          const ratingFloor = Math.floor(data.rating);
+          for (let i = 0; i < ratingFloor; i += 1) {
+            listRating += `
+              <div class="fa fa-star checked"></div>
+            `;
+          }
+          for (let i = 0; i < 5 - ratingFloor; i += 1) {
+            listEmptyRating += ` 
+              <div class="fa fa-star"></div>
+            `;
+          }
+          restaurantsContainer.innerHTML += createRestaurantItemTemplate(
+            data,
+            listRating,
+            listEmptyRating,
+          );
+        });
+      }
     });
   },
 };
